@@ -37,11 +37,10 @@ body:
    id: organizational_context
    attributes:
      label: Organizational Context
-     description: Provide context about your organization, industry, business model, and technical requirements that influenced this architecture.
+     description: Provide context about your organization, industry, and technical requirements that influenced this architecture.
      placeholder: |
        - Industry: Financial Services / Healthcare / Manufacturing / etc.
        - Organization size: 10,000+ employees
-       - Business model: B2B SaaS platform serving 500+ enterprise customers
        - Geographic distribution: Global with primary data centers in US, EU, APAC
        - Regulatory requirements: SOC2, GDPR, HIPAA compliance
        - Key business drivers that led to this architecture choice
