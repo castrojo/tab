@@ -7,53 +7,442 @@ body:
    attributes:
      value: |
        **Purpose of This Issue**
- 
+
        This is a submission for a proposal of a reference architecture, as [defined here](https://github.com/cncf/tab/blob/main/process/reference-architectures.md). It should not contain the full content but a summary to evaluate its relevance to the community.
+
+       **Submission Guidelines**
+       
+       Please provide detailed responses to help the community understand your architecture's value and implementation. Include specific examples, metrics, and lessons learned where applicable.
+
+ # Basic Information
  - type: input
    id: name
    attributes: 
      label: Name
      description: A name for this architecture submission. Suggestions include the name of the end user or domain as well as any specific area of interest (CI/CD, Edge, etc)
-     placeholder: Edge Deployments at Organization XYZ
+     placeholder: "Edge AI/ML Platform at TechCorp - Real-time Analytics Architecture"
    validations:
      required: true
+
  - type: input
    id: organization
    attributes:
-     label: Organization
-     description: Architectures must be submitted by at least one CNCF Member Company
-     placeholder: List of Organizations
+     label: Organization(s)
+     description: Architectures must be submitted by at least one CNCF Member Company. List all participating organizations.
+     placeholder: "TechCorp Inc. (Primary), Partner Solutions LLC (Implementation Partner)"
    validations:
      required: true
+
+ - type: textarea
+   id: organizational_context
+   attributes:
+     label: Organizational Context
+     description: Provide context about your organization, industry, and technical requirements that influenced this architecture.
+     placeholder: |
+       - Industry: Financial Services / Healthcare / Manufacturing / etc.
+       - Organization size: 10,000+ employees
+       - Geographic distribution: Global with primary data centers in US, EU, APAC
+       - Regulatory requirements: SOC2, GDPR, HIPAA compliance
+       - Key business drivers that led to this architecture choice
+   validations:
+     required: true
+
  - type: textarea
    id: teams
    attributes:
-     label: Team(s)
-     description: Describe the teams involved in this architecture
-     placeholder: Developer Platforms, ...
+     label: Team(s) and Roles
+     description: Describe the teams involved in this architecture, their roles, and organizational structure.
+     placeholder: |
+       - Platform Engineering Team (15 engineers): Infrastructure, CI/CD, developer tooling
+       - Security Team (8 engineers): Security policies, compliance, monitoring
+       - Application Development Teams (50+ engineers): Microservices development
+       - SRE Team (12 engineers): Production operations, monitoring, incident response
+       - Data Engineering Team (10 engineers): Data pipelines, analytics infrastructure
    validations:
      required: true
+
+ # Architecture Details
  - type: textarea
    id: overview
    attributes:
      label: Overview and Goals
-     description: A brief overview of the goals of the implementation
-     placeholder: Edge deployment for sensor tracking
+     description: A comprehensive overview of the goals, business objectives, and technical objectives of the implementation.
+     placeholder: |
+       **Business Goals:**
+       - Reduce time-to-market for new features from 6 weeks to 2 weeks
+       - Achieve 99.99% uptime SLA for customer-facing services
+       - Support 10x traffic growth over next 2 years
+       
+       **Technical Goals:**
+       - Implement cloud-native, container-based architecture
+       - Enable automated deployments with zero-downtime
+       - Improve developer productivity and experience
+       - Establish comprehensive observability and monitoring
+       
+       **Success Metrics:**
+       - Deployment frequency: From weekly to multiple times per day
+       - Lead time for changes: From 3 weeks to <2 days
+       - Mean time to recovery: From 4 hours to <30 minutes
    validations:
      required: true
+
+ - type: textarea
+   id: architecture_diagrams
+   attributes:
+     label: Architecture Diagrams and Documentation
+     description: Provide links to architecture diagrams, documentation, or describe the visual representations you plan to include in the full submission.
+     placeholder: |
+       **High-Level Architecture Diagram:** [Link to diagram or "Will provide in full submission"]
+       - Overall system architecture showing major components and data flow
+       
+       **Network Architecture:** [Link or description]
+       - Network topology, security zones, ingress/egress patterns
+       
+       **Deployment Architecture:** [Link or description] 
+       - CI/CD pipeline flow, environments, promotion strategy
+       
+       **Data Architecture:** [Link or description]
+       - Data flow, storage systems, processing pipelines
+       
+       **Security Architecture:** [Link or description]
+       - Authentication, authorization, secrets management, network security
+   validations:
+     required: false
+
+ - type: textarea
+   id: initial_architecture
+   attributes:
+     label: Initial/Previous Architecture
+     description: Describe the architecture before this implementation - what were you migrating from and why?
+     placeholder: |
+       **Previous State:**
+       - Monolithic application deployed on physical servers
+       - Manual deployment processes taking 4-6 hours
+       - Limited monitoring and observability
+       - Single data center with basic disaster recovery
+       
+       **Pain Points:**
+       - Slow feature delivery due to tightly coupled components
+       - Difficulty scaling individual components
+       - Long recovery times during incidents
+       - High infrastructure costs
+       - Developer productivity bottlenecks
+       
+       **Migration Triggers:**
+       - Business growth requiring better scalability
+       - Need for faster time-to-market
+       - Cost optimization requirements
+       - Talent acquisition challenges with legacy stack
+   validations:
+     required: true
+
+ - type: textarea
+   id: new_architecture
+   attributes:
+     label: New Architecture Details
+     description: Detailed description of the new architecture, including key design decisions and implementation approach.
+     placeholder: |
+       **Architecture Patterns:**
+       - Microservices with domain-driven design
+       - Event-driven architecture using CNCF projects
+       - Multi-cloud deployment with Kubernetes
+       
+       **Key Components:**
+       - API Gateway: Istio/Envoy for traffic management
+       - Service Mesh: Linkerd for service-to-service communication
+       - Container Orchestration: Kubernetes (EKS/GKE/AKS)
+       - CI/CD: Tekton/Argo CD for GitOps workflow
+       - Observability: Prometheus/Grafana/Jaeger stack
+       
+       **Design Principles:**
+       - Fail-fast, self-healing systems
+       - Infrastructure as Code
+       - Everything observable and auditable
+       - Security by design
+   validations:
+     required: true
+
  - type: textarea
    id: projects
    attributes:
-     label: Projects
-     description: List of projects being used in the proposed architecture (include all projects, also non CNCF projects)
-     placeholder: Kubernetes, Helm, ArgoCD, ...
+     label: Projects and Technology Stack
+     description: Comprehensive list of projects being used in the proposed architecture, including CNCF projects, open source projects, and commercial tools. Include versions and rationale for choices.
+     placeholder: |
+       **CNCF Projects:**
+       - Kubernetes v1.28: Container orchestration platform
+       - Prometheus v2.45: Metrics collection and alerting
+       - Grafana v10.0: Observability and dashboards
+       - Jaeger v1.47: Distributed tracing
+       - Helm v3.12: Package management
+       - Istio v1.18: Service mesh for traffic management
+       
+       **Other Open Source:**
+       - ArgoCD v2.7: GitOps continuous delivery
+       - PostgreSQL v15: Primary database
+       - Redis v7.0: Caching and session storage
+       
+       **Commercial/Cloud Services:**
+       - AWS EKS: Managed Kubernetes
+       - AWS RDS: Managed database services
+       - DataDog: APM and log aggregation
+       
+       **Selection Rationale:**
+       - Chose Kubernetes for portability across cloud providers
+       - Selected Istio for advanced traffic management features
+       - Prometheus chosen for CNCF alignment and community support
    validations:
      required: true
+
+ # Scale and Performance
+ - type: textarea
+   id: scale_adoption
+   attributes:
+     label: Scale and Adoption Data
+     description: Provide specific metrics about the scale of your implementation and adoption within your organization.
+     placeholder: |
+       **Current Scale:**
+       - 200+ microservices in production
+       - 500+ deployments per week across all services
+       - 50TB+ data processed daily
+       - 10M+ API requests per day
+       - 15 development teams using the platform
+       
+       **Growth Metrics:**
+       - Onboarded 25 new services in the last 6 months
+       - Deployment frequency increased 10x since implementation
+       - Developer team productivity increased 40%
+       
+       **Resource Utilization:**
+       - 1,500+ containers running across 100+ nodes
+       - 95% resource utilization efficiency
+       - 60% reduction in infrastructure costs compared to previous architecture
+       
+       **Adoption Timeline:**
+       - Pilot phase: 6 months with 3 services
+       - Production rollout: 12 months for core services
+       - Full adoption: 18 months organization-wide
+   validations:
+     required: true
+
+ - type: textarea
+   id: benchmarking
+   attributes:
+     label: Performance and Benchmarking
+     description: Include performance metrics, benchmarking data, and comparative analysis demonstrating the architecture's effectiveness.
+     placeholder: |
+       **Performance Metrics:**
+       - P95 API response time: <200ms (previously >2s)
+       - Application startup time: <30s (previously 5-10 minutes)
+       - Time to deploy: 8 minutes (previously 4+ hours)
+       - System availability: 99.97% (target 99.99%)
+       
+       **Load Testing Results:**
+       - Peak throughput: 50,000 requests/second
+       - Successful auto-scaling to 3x normal load
+       - Zero-downtime deployments under load
+       
+       **Efficiency Gains:**
+       - 70% reduction in deployment time
+       - 50% reduction in incident response time
+       - 90% reduction in manual configuration errors
+       
+       **Comparison with Previous Architecture:**
+       - 5x improvement in deployment frequency
+       - 80% reduction in resource waste
+       - 3x faster feature delivery
+   validations:
+     required: false
+
+ # Implementation Insights
+ - type: textarea
+   id: key_concepts
+   attributes:
+     label: Key Concepts and Patterns
+     description: Highlight the key architectural concepts, patterns, and best practices that make this implementation successful and reusable.
+     placeholder: |
+       **Architectural Patterns:**
+       - GitOps: All infrastructure and application changes via Git workflows
+       - Circuit Breaker: Resilience patterns for service communication
+       - CQRS: Command Query Responsibility Segregation for data handling
+       - Event Sourcing: Audit trail and eventual consistency
+       
+       **Operational Patterns:**
+       - Chaos Engineering: Regular failure injection for resilience testing
+       - Blue-Green Deployments: Zero-downtime release strategy
+       - Feature Flags: Progressive rollouts and quick rollbacks
+       - Immutable Infrastructure: Infrastructure versioning and reproducibility
+       
+       **Security Patterns:**
+       - Zero Trust: Never trust, always verify approach
+       - Secrets Management: Automated rotation and least-privilege access
+       - Policy as Code: Automated compliance and security checks
+       
+       **Development Patterns:**
+       - API-First: Contract-driven development
+       - Test-Driven Development: Comprehensive automation testing
+       - Shift-Left Security: Security integrated into development workflow
+   validations:
+     required: true
+
+ - type: textarea
+   id: developer_experience
+   attributes:
+     label: Developer Experience
+     description: Describe how this architecture impacts developer productivity, onboarding, and day-to-day workflows.
+     placeholder: |
+       **Developer Onboarding:**
+       - New developer productive in <1 week (previously 1 month)
+       - Self-service platform with automated environment provisioning
+       - Comprehensive documentation and runbooks
+       
+       **Daily Workflows:**
+       - Local development matches production (via containers/k8s)
+       - Automated testing and quality gates in CI/CD
+       - Real-time feedback on code quality and security
+       - Self-service debugging tools and observability
+       
+       **Productivity Improvements:**
+       - 60% reduction in time spent on infrastructure concerns
+       - Automated code review and compliance checking
+       - Instant environment provisioning for feature development
+       - Integrated monitoring and alerting for applications
+       
+       **Tools and Interfaces:**
+       - Developer portal with self-service capabilities
+       - CLI tools for common operations
+       - IDE integrations for debugging and testing
+       - Slack/Teams integration for deployment notifications
+   validations:
+     required: true
+
+ - type: textarea
+   id: use_cases
+   attributes:
+     label: Use Cases and Applications
+     description: Describe specific use cases, applications, or scenarios where this architecture pattern is particularly effective.
+     placeholder: |
+       **Primary Use Cases:**
+       - High-frequency trading platforms requiring <10ms latency
+       - Multi-tenant SaaS applications with data isolation requirements
+       - IoT data processing with millions of devices
+       - Real-time analytics and machine learning inference
+       
+       **Industry Applications:**
+       - Financial Services: Fraud detection and risk assessment
+       - Healthcare: Patient data processing and telemedicine
+       - E-commerce: Recommendation engines and inventory management
+       - Manufacturing: Predictive maintenance and supply chain optimization
+       
+       **Scenarios Where This Architecture Excels:**
+       - Organizations with 50+ development teams
+       - Applications requiring 99.9%+ uptime
+       - Systems needing to scale from thousands to millions of users
+       - Companies with strong compliance and security requirements
+       - Multi-cloud or hybrid cloud deployments
+       
+       **Anti-patterns (Where NOT to use):**
+       - Simple CRUD applications with <10 concurrent users
+       - Organizations with <5 developers
+       - Systems with infrequent updates (quarterly or less)
+   validations:
+     required: true
+
+ # Challenges and Lessons
+ - type: textarea
+   id: risks_challenges
+   attributes:
+     label: Risks and Challenges
+     description: Identify potential risks, challenges encountered during implementation, and mitigation strategies.
+     placeholder: |
+       **Technical Risks:**
+       - Complexity: Increased operational overhead requires skilled teams
+       - Vendor Lock-in: Cloud-specific services creating dependencies
+       - Network Latency: Service mesh overhead impacting performance
+       - Data Consistency: Eventual consistency challenges in distributed systems
+       
+       **Organizational Risks:**
+       - Skills Gap: Need for extensive team training and hiring
+       - Change Management: Resistance to new development practices
+       - Cultural Shift: Moving from traditional operations to DevOps/SRE model
+       
+       **Mitigation Strategies:**
+       - Comprehensive training programs and knowledge sharing
+       - Gradual migration strategy with pilot projects
+       - Strong governance and architectural review processes
+       - Investment in monitoring and observability tools
+       - Regular architecture reviews and retrospectives
+       
+       **Lessons from Failures:**
+       - Started with too many services (learned to consolidate first)
+       - Underestimated networking complexity (invested in network team)
+       - Initially poor observability led to difficult debugging
+   validations:
+     required: true
+
+ - type: textarea
+   id: lessons_learned
+   attributes:
+     label: Lessons Learned and Best Practices
+     description: Share key insights, lessons learned, and actionable best practices for organizations considering similar implementations.
+     placeholder: |
+       **Key Lessons Learned:**
+       - Start with a walking skeleton - build end-to-end pipeline first
+       - Invest heavily in observability before scaling microservices
+       - Culture change is harder than technology change
+       - Security must be built-in from day one, not retrofitted
+       - Developer education and buy-in is critical for success
+       
+       **Do's:**
+       - Establish clear service boundaries and ownership
+       - Implement comprehensive testing strategies (unit, integration, e2e)
+       - Create runbooks and incident response procedures
+       - Regularly conduct chaos engineering exercises
+       - Maintain architectural decision records (ADRs)
+       
+       **Don'ts:**
+       - Don't migrate everything at once (strangler fig pattern)
+       - Don't neglect the importance of change management
+       - Don't underestimate the complexity of distributed systems
+       - Don't forget about disaster recovery and business continuity
+       
+       **Recommendations for Similar Organizations:**
+       - Budget 30-40% of time for learning and experimentation
+       - Invest in dedicated platform/infrastructure teams
+       - Establish communities of practice for knowledge sharing
+       - Start with non-critical services for learning
+       - Plan for 12-18 month transformation timeline
+   validations:
+     required: true
+
+ # Future Evolution
  - type: textarea
    id: evolution
    attributes:
-     label: Planned Evolution
-     description: Any evolution planned for this reference architecture
-     placeholder: Improvements in the area of networking and monitoring of edge devices
+     label: Planned Evolution and Roadmap
+     description: Describe the planned evolution, future enhancements, and long-term roadmap for this reference architecture.
+     placeholder: |
+       **Short-term (3-6 months):**
+       - Implement advanced Istio features (traffic splitting, fault injection)
+       - Add machine learning pipeline for predictive scaling
+       - Enhance security with OPA/Gatekeeper policy enforcement
+       - Improve cost optimization with resource right-sizing automation
+       
+       **Medium-term (6-12 months):**
+       - Multi-cluster deployment for geographic distribution
+       - Advanced chaos engineering with automated failure scenarios
+       - Integration with emerging CNCF projects (Backstage, Crossplane)
+       - FinOps implementation for cloud cost management
+       
+       **Long-term (12+ months):**
+       - Edge computing integration for IoT workloads
+       - Serverless/FaaS adoption for event-driven components
+       - AI/ML ops integration for automated operations
+       - Sustainability and green computing initiatives
+       
+       **Technology Evolution Drivers:**
+       - CNCF project maturity and new capabilities
+       - Business requirements for edge computing
+       - Regulatory changes requiring enhanced security
+       - Cost optimization and efficiency improvements
    validations:
      required: true
