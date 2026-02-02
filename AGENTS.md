@@ -82,8 +82,49 @@ git fetch upstream
 # Configure bd role
 git config beads.role contributor
 
+# CRITICAL: Enable DCO signoff (required for all CNCF contributions)
+git config format.signoff true
+
 # Install bd hooks for AI integration
 bd hooks install
+```
+
+### Developer Certificate of Origin (DCO)
+
+**CRITICAL**: All commits to this repository and upstream CNCF projects MUST include DCO signoff.
+
+The DCO is a legal statement that you have the right to submit your contribution. CNCF projects require this for all contributions.
+
+**Automatic DCO (Recommended)**:
+```bash
+# Enable automatic signoff for all commits
+git config format.signoff true
+```
+
+**Manual DCO**:
+```bash
+# Add signoff to individual commits
+git commit -s -m "Your commit message"
+
+# Or amend existing commit to add signoff
+git commit --amend --signoff --no-edit
+```
+
+**Verifying DCO**:
+```bash
+# Check if commit has DCO signoff
+git log -1 --pretty=format:"%B"
+# Should show: Signed-off-by: Your Name <your.email@example.com>
+```
+
+**Fixing Missing DCO**:
+```bash
+# For the last commit
+git commit --amend --signoff --no-edit
+git push -f origin <branch-name>
+
+# For older commits, use interactive rebase
+git rebase -i HEAD~<number-of-commits> --signoff
 ```
 
 ### Workflow: Fork (Detailed)
@@ -126,14 +167,19 @@ git reset .beads/              # CRITICAL: Remove .beads/ from staging
 rm -rf .beads/                 # Remove from working tree
 git status                     # Verify only intended files are staged
 
-# 4. Create single professional commit with AI attribution
-git commit --no-verify -m "Your PR title
+# 4. Create single professional commit with AI attribution and DCO
+# Note: If format.signoff=true is set, --signoff is automatic
+# Use --no-verify only if beads hook fails (e.g., on clean branch without .beads/)
+git commit --signoff --no-verify -m "Your PR title
 
 Detailed description of changes and motivation.
 
 Addresses cncf/tab#<number>
 
 Assisted-by: Claude 3.5 Sonnet via GitHub Copilot"
+
+# Alternative if format.signoff=true is configured:
+# git commit --no-verify -m "..." (DCO will be added automatically)
 
 # 5. Verify commit contents (MUST show only intended files, no .beads/)
 git log --oneline -1 --stat
@@ -246,6 +292,7 @@ bd update <id> --notes "Session paused at: <state>"
 🚨 **MUST exclude .beads/ directory**
 🚨 **MUST have professional commit message**
 🚨 **MUST link to upstream issue**
+🚨 **MUST include DCO signoff**
 
 ---
 
@@ -255,6 +302,7 @@ bd update <id> --notes "Session paused at: <state>"
 # Verify setup
 git remote -v                  # Should show origin + upstream
 git config --get beads.role    # Should show "contributor"
+git config --get format.signoff # Should show "true" (DCO enabled)
 bd doctor                      # Should pass all checks
 ls -la .git/hooks/             # Should show bd hooks
 ```
