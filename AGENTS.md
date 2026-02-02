@@ -104,34 +104,81 @@ git push origin feature/your-work
 ```
 
 ### Workflow: Upstream PR (Squashed)
+
+**IMPORTANT**: The user should write the PR description, not the AI. The AI prepares the branch and opens a browser for the user to complete the PR submission.
+
 ```bash
-# Create clean branch from upstream
+# 1. Fetch latest upstream
+git fetch upstream
+
+# 2. Create clean branch from upstream/main
 git checkout -b upstream-your-work upstream/main
 
-# Squash all work into single commit
-git merge --squash feature/your-work
+# 3. Copy specific files from your work (avoid squash merge which includes .beads/)
+# Option A: Copy specific files manually
+git show main:file1.md > file1.md
+git show main:file2.md > file2.md
+git add file1.md file2.md
 
-# CRITICAL: Exclude .beads/ directory
-git reset .beads/
+# Option B: If using merge --squash, MUST exclude .beads/
+git merge --squash main
+git reset .beads/              # CRITICAL: Remove .beads/ from staging
+rm -rf .beads/                 # Remove from working tree
+git status                     # Verify only intended files are staged
 
-# Stage only relevant files
-git add <files>
-
-# Single professional commit
-git commit -m "Your PR title
+# 4. Create single professional commit with AI attribution
+git commit --no-verify -m "Your PR title
 
 Detailed description of changes and motivation.
 
-Addresses cncf/tab#<number>"
+Addresses cncf/tab#<number>
 
-# Push to your fork
+Assisted-by: Claude 3.5 Sonnet via GitHub Copilot"
+
+# 5. Verify commit contents (MUST show only intended files, no .beads/)
+git log --oneline -1 --stat
+
+# 6. Push branch to your fork
 git push origin upstream-your-work
 
-# Create PR to upstream
-gh pr create --repo cncf/tab --base main --head castrojo:upstream-your-work
+# 7. Open browser for user to create PR (USER FILLS IN PR DESCRIPTION)
+xdg-open "https://github.com/cncf/tab/compare/main...castrojo:tab:upstream-your-work?expand=1"
 
-# Close bd issue
+# The user will:
+# - Review the commit and file changes
+# - Write the PR title and description
+# - Submit the PR
+# - Copy the PR URL
+
+# 8. After user submits PR, close bd issue
 bd close <id> --reason "PR submitted: <url>"
+
+# 9. Switch back to main
+git checkout main
+```
+
+### Troubleshooting Upstream PR Creation
+
+**Problem: "branches are identical" when creating PR**
+- The commit wasn't created or pushed
+- Solution: Check `git log upstream/main..upstream-your-work` shows your commit
+- If empty, you need to commit and push
+
+**Problem: .beads/ directory included in commit**
+- Solution: Reset and exclude it
+```bash
+git reset HEAD~1                 # Undo commit
+git reset .beads/                # Unstage .beads/
+rm -rf .beads/                   # Remove from working tree
+git add <intended-files>         # Stage only what you want
+git commit --no-verify -m "..."  # Commit without beads hook
+```
+
+**Problem: beads hook preventing commit**
+- If beads database is missing (e.g., on clean branch), use `--no-verify`
+- The hook is important for fork work, but PRs to upstream don't need beads validation
+```bash
+git commit --no-verify -m "Your commit message"
 ```
 
 ### Sync with Upstream
