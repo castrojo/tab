@@ -1,3 +1,9 @@
+> **Note:** This is a working fork of [cncf/tab](https://github.com/cncf/tab) for prototyping.
+> Work is tracked with [bd (beads)](https://github.com/steveyegge/beads), iterated with detailed commits,
+> then squashed and submitted as clean PRs upstream. See [AGENTS.md](AGENTS.md) for workflow.
+
+---
+
 # CNCF End User Technical Advisory Board (TAB)
 
 ## Overview
