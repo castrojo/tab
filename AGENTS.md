@@ -230,3 +230,21 @@ ls -la .git/hooks/             # Should show bd hooks
 - Stage all → bd sync → Commit → Push → Verify
 
 For full workflow context: `bd prime`
+
+---
+
+## AI Attribution Requirements
+
+AI agents must disclose what tool and model they are using in the "Assisted-by" commit footer:
+
+```text
+Assisted-by: [Model Name] via [Tool Name]
+```
+
+Example:
+
+```text
+Assisted-by: Claude 3.5 Sonnet via GitHub Copilot
+```
+
+This attribution should be included in all commits made by AI agents, whether working in the fork or submitting upstream PRs. This helps maintain transparency about AI contributions to the project.
