@@ -2,6 +2,10 @@
 
 This document provides comprehensive guidelines for reviewing CNCF reference architecture submissions. It serves as both a review checklist and an agent skill document for conducting independent, thorough evaluations.
 
+## Agent Instructions
+
+You are an assistant to a technical reviewer. Be consise and curt, do not use exaggarated language, state the facts clearly. A human reviewer will make the ultimate decision, focus on surfacing the data.
+
 ## Review Principles
 
 **Independent Reviews:**
@@ -14,9 +18,10 @@ This document provides comprehensive guidelines for reviewing CNCF reference arc
 **Review Process:**
 - Weight all criteria equally unless specifically instructed otherwise
 - Provide evidence-based assessment with specific examples
-- Create GitHub issues in fork (castrojo/tab) for iterative review
-- Issues can be updated automatically as reviews are refined
+- Create GitHub issues in fork (castrojo/tab) for iterative review, always keep these issues up to date so that the issues reflect the current state of this review document.
+- Issues should be updated automatically as reviews are refined, ensure only one issue per reference architecture exists. Each issue is a running copy.
 - DO NOT create issues in upstream cncf/tab without explicit permission
+- DO NOT TAG ANY INDIVIDUAL
 
 ### Review Philosophy
 
@@ -112,7 +117,7 @@ Reference architectures should come from end users who are part of the CNCF comm
 - Authentic real-world implementation experience
 - Alignment with CNCF values and open source principles
 - Credibility and trust within the community
-- Opportunity for ongoing engagement and knowledge sharing
+- Opportunity for ongoing engagement and knowledge sharing throughout the organization and its members
 
 **Verification Steps:**
 
@@ -170,7 +175,7 @@ Strong submissions demonstrate:
 - Engagement with project maintainers and communities
 - Bug reports, feature requests, or code contributions
 - Participation in SIGs or working groups
-- Sharing lessons learned with project communities
+- Sharing lessons learned with project communities via [KubeCon talks](https://www.youtube.com/@cncf) 
 
 **Historical Context:**
 
@@ -275,19 +280,22 @@ Reference architectures typically address:
 - Data volumes processed
 - Transaction/request volumes
 - Geographic distribution (regions, data centers)
+- Impact on the business, metrics used to measure this
 
 **People Scale:**
 - Number of teams using the platform
 - Total engineers involved
 - Platform team size
 - Organizational reach (business units, subsidiaries)
+- Impact on the business, metrics used to measure this
 
 **Operational Scale:**
 - Deployment frequency
 - Number of deployments per day/week
 - Services onboarded over time
 - Growth rate and trajectory
-
+- Impact on the business, metrics used to measure this
+  
 **Scale Benchmarks from Published Case Studies:**
 
 **Large-Scale (Enterprise):**
@@ -328,6 +336,7 @@ Reference architectures should clearly identify and address multiple stakeholder
 - How does it reduce operational burden?
 - What automation and tooling is provided?
 - How is the platform maintained and evolved?
+- Impact on the business, metrics used to measure this
 
 **Application Developers:**
 - How does this improve developer experience?
@@ -344,6 +353,7 @@ Reference architectures should clearly identify and address multiple stakeholder
 **Business Leadership:**
 - What business outcomes are achieved?
 - How is ROI demonstrated?
+- How are the business metrics measured?
 - What competitive advantages are gained?
 - How does this enable business strategy?
 
@@ -481,7 +491,7 @@ Strong reference architectures:
 - Demonstrate deep expertise and lessons learned
 - Reflect positively on the organization and team
 - Would make leadership proud to see in headlines
-- Would work well as KubeCon paper presentation
+- Would work well as KubeCon presentation by appealing to the greater cloud native community
 
 **Community Discussion Test:**
 
