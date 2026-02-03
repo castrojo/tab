@@ -1,0 +1,44 @@
+# Initial Submission Checks
+
+- Does the submission pass the initial “lint” in the issue template?  
+  - Filled out correctly, submitted to the right spot  
+- Is the submitter a CNCF End User Member?  
+  - If not, is the submission a good step towards having them become more engaged?  
+- Is the submission relevant to the CNCF audience?  
+  - “If this was a KubeCon presentation would people go to it?” Z  
+  - Is it clear which CNCF Projects are being consumed and how?   
+  - Is there contact with the CNCF Projects that they are using?  
+  - Are they collaborating with said projects? Are they contributing directly?  
+    - Are they explaining how they contribute to the projects using the same methodologies across the CNCF and Linux Foundation?  
+    - Is the organization listed in LFX?   
+    - Are they leveraging all of the CNCF/LF data to tell this story? Do they need help here?  
+  - Is it “hot” tech? Or critical infrastructure work that typically goes unnoticed? We want both\!  
+- Does the submission solve a problem?  
+  - Is the scale and complexity of the problem explained clearly?  
+  - Does it do something unique worth highlighting?  
+  - What kind of problem?  
+    - Production, Prototype, Efficiency gain, new product, etc.  
+- Does the submission highlight the scale of the project?  
+  - Tech stats (number of nodes, datacenters, etc)  
+  - People and teams involved   
+  - Geographical considerations at scale     
+- Does the submission reflect favorably on the end user and the projects involved?  
+  - “Does the submission make that platform team look good?”  
+  - Is the submission something company leadership could see in a headline and be proud of their people?   
+  - Would the submission work as a paper presentation at KubeCon?  
+  - Would the submission generate discussion amongst other end users? If not generally, to a specific segment of the industry?  
+- What field of industry is the submission in?  
+  - Is it under or over served as a whole in the CNCF?   
+  - Look for diamonds on the rough, “weird magic”  
+- Does the submission follow a logical flow?  
+- Is the grammar and text suitable for professional work?  
+  - We’re not looking for raw LLM.  
+- Do the included charts make sense?  
+  - Do they explain an overview?  
+  - Are there too many/not enough diagrams and charts?   
+  - Can a “typical CTO” understand what the submission is about?  
+- \[Something about stakeholders\]  
+- Metrics  
+  - What metrics were used to determine project success  
+  - Is the methodology for measuring the metrics clear?   
+  - 

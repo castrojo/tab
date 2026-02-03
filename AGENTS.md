@@ -87,6 +87,57 @@ Agent: "I've investigated the PR feedback and posted a comment addressing it."
 
 ---
 
+## CNCF Architecture Repository
+
+The **cncf/architecture** repository houses published reference architectures reviewed and approved by the TAB.
+
+### Repository Information
+
+- **URL**: https://github.com/cncf/architecture
+- **Purpose**: Public-facing Hugo-based website showcasing end user reference architectures
+- **Website**: https://architecture.cncf.io/
+
+### Repository Structure
+
+```
+cncf/architecture/
+├── content/
+│   └── en/
+│       └── architectures/     # Reference architectures live here
+│           ├── adobe/          # Adobe reference architecture
+│           │   ├── index.md
+│           │   └── images/
+│           └── allianz/        # Allianz reference architecture
+│               ├── index.md
+│               └── images/
+```
+
+### Reference Architecture Workflow
+
+The TAB reviews and approves reference architecture submissions according to:
+
+1. **Process**: Documented in `process/reference-architectures.md` (this repo)
+   - 6-step workflow: Proposed → Accepted/Rejected → Reviewed → Validated by TOC → Published → Announced
+
+2. **Review Guidelines**: Documented in `process/reference-architecture-review-guidelines.md` (this repo)
+   - Comprehensive checklist for evaluating submissions
+   - Covers: relevance, problem-solving, scale, industry representation, quality standards
+
+### Current Reference Architectures
+
+- **Adobe**: Platform engineering reference architecture
+- **Allianz**: Platform engineering reference architecture (contributed 2024)
+
+### Agent Guidelines for cncf/architecture
+
+- ✅ **READ ONLY** - This is an upstream CNCF repo, treat like cncf/tab
+- ✅ Reference architectures are in `content/en/architectures/[org-name]/`
+- ✅ Each architecture has `index.md` and `images/` directory
+- ❌ **DO NOT** directly modify or submit PRs to cncf/architecture
+- ❌ **DO NOT** audit existing architectures without explicit request
+
+---
+
 ## bd (Beads) Issue Tracking
 
 This project uses **bd** for issue tracking. Run `bd prime` for full workflow context.
@@ -98,6 +149,14 @@ This project uses **bd** for issue tracking. Run `bd prime` for full workflow co
 - **bd metadata STAYS in fork** - Never include .beads/ in upstream PRs
 - **Track upstream issues** - Create bd issues for cncf/tab work
 - **Link everything** - Reference upstream issue numbers in bd
+
+### Critical Rule: Beads Issues Are Local Only
+
+- **NEVER link beads issues to upstream GitHub issues**
+- Beads issues track YOUR work in YOUR fork
+- Upstream issues are referenced in commit messages and PR descriptions only
+- Keep beads tracking completely separate from upstream tracking
+- Example: Do NOT use `bd dep add` to link to upstream issue numbers
 
 ### Quick Reference
 
