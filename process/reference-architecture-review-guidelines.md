@@ -764,6 +764,13 @@ When conducting a reference architecture review:
    - Track changes in review as submission evolves
    - Maintain conversation with submitter if clarifications needed
 
+9. **Clarify confusing acronyms while recognizing industry partnerships**
+   - If source documents mention "CNOE" (Cloud Native Operational Excellence), always spell it out on first reference to avoid confusion with "CNCF"
+   - Example: "Published blog on Cloud Native Operational Excellence (CNOE).io" or "Active in CNOE (Cloud Native Operational Excellence) cohort"
+   - Recognize legitimate industry partnerships and affiliations (Linux Foundation projects, standards bodies, industry consortiums) when relevant to the architecture story
+   - CNCF commonly partners with other organizations - these relationships add value and context
+   - Focus reviews primarily on CNCF project usage, CNCF community engagement, and CNCF End User membership, while acknowledging broader ecosystem participation
+
 ### Common Pitfalls to Avoid
 
 ❌ **Don't:**
@@ -773,6 +780,7 @@ When conducting a reference architecture review:
 - Focus only on technical aspects (remember business and organizational context)
 - Accept vague or generic statements without evidence
 - Ignore industry representation considerations
+- Use confusing acronyms like "CNOE" without spelling them out (easily confused with "CNCF")
 
 ✅ **Do:**
 - Apply criteria consistently and fairly
@@ -781,6 +789,7 @@ When conducting a reference architecture review:
 - Consider submitter's specific context and constraints
 - Value both innovation and solid production stories
 - Recognize industry under-representation as valuable
+- Acknowledge legitimate industry partnerships and ecosystem participation (Linux Foundation, standards bodies, consortiums)
 
 ---
 
