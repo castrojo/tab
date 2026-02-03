@@ -136,22 +136,103 @@ The TAB reviews and approves reference architecture submissions according to:
 - ❌ **DO NOT** directly modify or submit PRs to cncf/architecture
 - ❌ **DO NOT** audit existing architectures without explicit request
 
-### Reference Architecture Review Principles
+### CNCF Reference Architecture Requirements
 
-**Independent Reviews:**
-- Each reference architecture MUST be reviewed independently against guidelines
-- DO NOT compare architectures to each other during review
-- Each review stands on its own merits
-- Comparative analysis only appropriate when explicitly requested
-- Testing guidelines means evaluating guideline effectiveness per architecture, not ranking architectures
+Reference architectures submitted to the TAB must demonstrate:
 
-**Review Process:**
-- Use guidelines in `process/reference-architecture-review-guidelines.md`
-- Weight all criteria equally unless specifically instructed otherwise
-- Provide evidence-based assessment with specific examples
-- Create GitHub issues in fork (castrojo/tab) for iterative review
-- Issues can be updated automatically as reviews are refined
-- DO NOT create issues in upstream cncf/tab without explicit permission
+**Submission Requirements:**
+- CNCF End User Member organization (or clear path to membership)
+- Production deployment at meaningful scale
+- Use of multiple CNCF projects (not just Kubernetes)
+- Clear problem statement and measurable outcomes
+- Professional documentation with architecture diagrams
+- Organizational and industry context
+
+**Evaluation Criteria (8 key areas):**
+1. Initial submission quality and completeness
+2. CNCF End User Member status and engagement
+3. CNCF relevance and audience value
+4. Problem statement and solution uniqueness
+5. Scale and adoption indicators
+6. Organizational and industry representation
+7. Quality standards and documentation
+8. Metrics and measurable outcomes
+
+**Full Guidelines:**
+- Comprehensive review guidelines: `process/reference-architecture-review-guidelines.md`
+- Submission template: `.github/ISSUE_TEMPLATE/reference-architecture.yml`
+- 6-step process workflow: `process/reference-architectures.md`
+
+### CNCF Historical Data and Insights
+
+The TAB maintains comprehensive research on CNCF case studies and technology adoption to inform reference architecture reviews.
+
+**Case Studies Analysis (179 published):**
+
+Industry representation patterns:
+- Well-represented: Financial Services (26), Software/Tech (26), Telecom (18)
+- Under-represented: Healthcare (4), Manufacturing (3), Energy (3)
+- Geographic: 40% North America, 32% Europe, 23% Asia-Pacific
+
+Scale benchmarks:
+- **Large-scale**: 100+ clusters, 1000+ services (Adobe: 360+ clusters, 22K+ apps)
+- **Mid-scale**: 10-50 clusters, 100-500 services (NYT: 40+ clusters)
+- **Emerging**: 5-20 clusters, 20-100 services (UK GDS: 30+ services)
+
+Technology adoption:
+- Kubernetes: 83% of case studies
+- Prometheus: 32%
+- Service mesh: 18%
+- Helm: 28%
+
+**Full Research:**
+- Complete case studies analysis: `process/reference-architectures-data/cncf-case-studies-research.md`
+- Industry representation breakdown
+- Quality patterns and examples
+- Technology adoption trends
+- Best practices for submissions
+
+### CNCF End User Technology Radar
+
+The CNCF publishes Technology Radars capturing end user perspectives on cloud native technologies.
+
+**Radar Structure:**
+- **Adopt**: Confidently recommended for production (e.g., Kubernetes, Prometheus, Envoy)
+- **Trial**: Active evaluation, showing promise (newer CNCF projects)
+- **Assess**: Interesting but too early for production
+
+**Published Radars:**
+- 6 interactive radars (2020-2021): Continuous Delivery, Observability, Security, DevSecOps, Storage, Network
+- 3 survey reports (2024-2025): Multicluster Management, AI/ML on Kubernetes, Observability
+
+**Key Insights:**
+- Platform engineering and developer experience priorities
+- OpenTelemetry standardization accelerating  
+- eBPF adoption for observability and security
+- Multi-cluster management challenges (most run 10+ clusters)
+- AI/ML workload support emerging
+
+**Reference Architecture Relevance:**
+- Core components should primarily use "Adopt" technologies
+- "Trial" technologies acceptable with clear rationale and production validation
+- "Assess" or unlisted technologies require strong justification
+
+**Full Documentation:**
+- Complete radar history and methodology: `process/reference-architectures-data/cncf-enduser-radar.md`
+
+### Agent-Specific Guidance
+
+**For ALL Agents:**
+- Reference architecture submissions are tracked in GitHub issues
+- Historical data available in `process/reference-architectures-data/`
+- High-level context in this document, detailed guidelines in dedicated docs
+
+**For Reference Architecture Review Agents:**
+- Use `process/reference-architecture-review-guidelines.md` as primary skill document
+- Review principles, rating scales, and methodology defined there
+- Apply 8 criteria evaluation framework consistently
+- Create detailed review issues in fork (castrojo/tab)
+- Consult historical data for context and benchmarks
 
 ---
 
