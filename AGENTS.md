@@ -136,6 +136,23 @@ The TAB reviews and approves reference architecture submissions according to:
 - ❌ **DO NOT** directly modify or submit PRs to cncf/architecture
 - ❌ **DO NOT** audit existing architectures without explicit request
 
+### Reference Architecture Review Principles
+
+**Independent Reviews:**
+- Each reference architecture MUST be reviewed independently against guidelines
+- DO NOT compare architectures to each other during review
+- Each review stands on its own merits
+- Comparative analysis only appropriate when explicitly requested
+- Testing guidelines means evaluating guideline effectiveness per architecture, not ranking architectures
+
+**Review Process:**
+- Use guidelines in `process/reference-architecture-review-guidelines.md`
+- Weight all criteria equally unless specifically instructed otherwise
+- Provide evidence-based assessment with specific examples
+- Create GitHub issues in fork (castrojo/tab) for iterative review
+- Issues can be updated automatically as reviews are refined
+- DO NOT create issues in upstream cncf/tab without explicit permission
+
 ---
 
 ## bd (Beads) Issue Tracking
