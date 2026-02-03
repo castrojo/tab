@@ -36,6 +36,57 @@ This repository serves as a prototyping and development workspace:
 
 ---
 
+## AI Agent Communication Rules
+
+**CRITICAL**: AI agents must NEVER take external actions on behalf of the user without explicit permission.
+
+### Prohibited Actions
+
+AI agents are **STRICTLY FORBIDDEN** from:
+
+- ❌ Posting PR comments (`gh pr comment`)
+- ❌ Posting issue comments (`gh issue comment`)
+- ❌ Creating pull requests (`gh pr create`)
+- ❌ Creating issues (`gh issue create`)
+- ❌ Pushing commits to GitHub (`git push`)
+- ❌ Any other external write operation that acts on the user's behalf
+
+### Required Behavior
+
+AI agents MUST:
+
+- ✅ **Investigate and research** - Read repos, search history, analyze code
+- ✅ **Present findings** - Summarize results, show evidence, explain conclusions
+- ✅ **Draft content** - Prepare commit messages, PR descriptions, comments for user review
+- ✅ **Wait for explicit permission** - Never assume the user wants you to post/create/push
+- ✅ **Stage local changes only** - `git add`, `git commit` to local repo is allowed
+- ✅ **Let the user decide** - The user will post their own comments and create their own PRs
+
+### Example Workflow
+
+**CORRECT:**
+```
+Agent: "I've investigated the PR feedback. Here's what I found: [analysis]
+        I recommend updating the file with: [proposed changes]
+        Would you like me to make these changes locally?"
+User: "Yes, do it"
+Agent: [makes local changes, commits]
+Agent: "Changes committed locally. Ready for you to push when ready."
+```
+
+**INCORRECT:**
+```
+Agent: "I've investigated the PR feedback and posted a comment addressing it."
+[Agent used gh pr comment without permission - FORBIDDEN]
+```
+
+**Why This Rule Exists:**
+- The user's GitHub identity is their professional reputation
+- All external communications should reflect the user's voice and judgment
+- AI agents should assist with research and preparation, not speak for the user
+
+---
+
 ## bd (Beads) Issue Tracking
 
 This project uses **bd** for issue tracking. Run `bd prime` for full workflow context.
