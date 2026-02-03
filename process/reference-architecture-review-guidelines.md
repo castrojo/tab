@@ -18,46 +18,61 @@ This document provides comprehensive guidelines for reviewing CNCF reference arc
 - Issues can be updated automatically as reviews are refined
 - DO NOT create issues in upstream cncf/tab without explicit permission
 
+### Review Philosophy
+
+The TAB review process serves as a **data-surfacing tool** to help the Technical Advisory Board make informed decisions about reference architecture submissions. Reviews are:
+
+- **Opt-in contributions** - Organizations voluntarily share their architectures to benefit the community
+- **Collaborative assessments** - Identifying development opportunities, not passing judgment
+- **Maturity-based** - Evaluating readiness across multiple dimensions
+- **Context-aware** - Considering organizational goals and industry representation
+
+The goal is to provide TAB with comprehensive information about submission readiness, not to categorically approve or reject contributions.
+
 **Rating Scale:**
 
-Reviews use a three-tier rating system for each criterion:
+We use a **maturity model** approach to assess each criterion:
 
-- **✅ Pass**: Criterion is met with strong evidence and clear documentation
-- **⚠️ Partial Pass**: Criterion is partially met but has gaps, needs clarification, or could be improved
-- **❌ Needs Work**: Criterion is not met or has significant deficiencies requiring revision
+- **🟢 Established**: Demonstrates strong maturity in this dimension
+- **🟡 Developing**: Shows progress with opportunities for enhancement
+- **⚪ Emerging**: Early stage with significant development recommended
+
+This positive framing recognizes that submissions are at different stages of their journey and focuses on constructive pathways forward.
 
 **Overall Assessment:**
 
-After evaluating all criteria, provide an overall recommendation:
+After evaluating each criterion, provide a **narrative assessment** that:
 
-- **STRONG PASS**: 7-8 criteria at ✅ Pass, architecture is publication-ready
-- **PASS**: 5-6 criteria at ✅ Pass, minor revisions may be suggested
-- **PARTIAL PASS**: 3-4 criteria at ✅ Pass, needs revision before publication
-- **NEEDS WORK**: <3 criteria at ✅ Pass, substantial revision required
+- Summarizes maturity across all dimensions
+- Identifies key strengths and development opportunities
+- Describes readiness for TAB consideration
+- Suggests constructive pathways forward
+
+**Example:** "This submission demonstrates established technical depth (🟢) and strong CNCF relevance (🟢), with developing metrics (🟡) and emerging organizational context (⚪). The architecture would benefit from additional outcome data and industry positioning before TAB review."
 
 ---
 
 ## 1. Initial Submission Checks
 
-### Submission Quality
+### 1.1 Content Quality
 
-**✅ Pass:**
+**🟢 Established:**
 - Issue template filled out completely and correctly
 - Submitted to correct repository with proper labels
 - All required fields have substantive responses (not placeholders)
 - Grammar and text suitable for professional publication
 - Not raw LLM output (shows human editing and domain expertise)
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Most fields completed but some sections need expansion
-- Minor grammar or formatting issues that can be easily fixed
+- Shows promise with opportunities for refinement
 - Some sections feel template-driven but show original content
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - Missing required fields or placeholder content
 - Submitted to wrong location or incorrect format
-- Poor grammar making content difficult to understand
-- Obvious unedited LLM output (generic, lacks specifics)
+- Would benefit from refinement in grammar and clarity
+- Content would benefit from substantial development
 
 **Historical Context:**
 
@@ -75,21 +90,21 @@ Example from Adobe: 4,200 words, 5 architecture diagrams, specific metrics (360+
 
 ### Submitter Engagement
 
-**✅ Pass:**
+**🟢 Established:**
 - Submitter is a CNCF End User Member in good standing
-- Listed in LFX with verified organization profile
+- Listed in cncf/landscape repository as End User Member
 - Demonstrated engagement with CNCF (events, case studies, community participation)
 - Clear path to increased engagement if not already deeply involved
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Organization is exploring CNCF membership
 - Some engagement but not formally a member yet
 - Strong potential for future engagement
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - No CNCF connection or membership
 - No clear path to membership or engagement
-- Submission appears to be vendor marketing rather than end user architecture
+- May benefit from end user perspective emphasis
 
 **Why This Matters:**
 
@@ -102,7 +117,17 @@ Reference architectures should come from end users who are part of the CNCF comm
 **Verification Steps:**
 
 1. Check CNCF member list: https://www.cncf.io/about/members/
-2. Search LFX for organization: https://landscape.cncf.io/
+2. Verify end user status in cncf/landscape repository:
+
+```bash
+# Verify end user membership
+curl -s https://raw.githubusercontent.com/cncf/landscape/master/landscape.yml | \
+  grep -A 5 "name: \"Organization Name\"" | \
+  grep "enduser: true"
+```
+
+If the command returns output, the organization is confirmed as an end user member.
+
 3. Look for past KubeCon presentations or case studies
 4. Check GitHub contributions to CNCF projects (if claimed)
 
@@ -112,18 +137,18 @@ Reference architectures should come from end users who are part of the CNCF comm
 
 ### CNCF Project Usage
 
-**✅ Pass:**
+**🟢 Established:**
 - Clear identification of which CNCF projects are being used (minimum 3-4 core projects)
 - Specific versions and configurations documented
 - Integration patterns and architecture decisions explained
 - Usage goes beyond basic Kubernetes (shows advanced adoption)
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - CNCF projects identified but details lacking
 - Heavy reliance on proprietary or vendor-specific solutions
 - Basic Kubernetes usage without ecosystem integration
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - CNCF projects not clearly identified
 - Primarily vendor/proprietary solution with minimal open source
 - No clear connection to CNCF technology stack
@@ -172,18 +197,18 @@ See `reference-architectures-data/cncf-enduser-radar.md` for current radar statu
 
 ### Problem Definition
 
-**✅ Pass:**
+**🟢 Established:**
 - Clear problem statement with business context
 - Scale and complexity of problem well explained
 - Quantified pain points (e.g., "deployments took 4 hours", "MTTR was 6 hours")
 - Clear explanation of why existing solutions were insufficient
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Problem stated but lacks specificity
 - Business impact not quantified
 - Scale indicators vague or missing
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - No clear problem statement
 - Generic "needed to modernize" without specifics
 - Solution presented without explaining the problem
@@ -225,18 +250,18 @@ Reference architectures typically address:
 
 ### Scale Metrics
 
-**✅ Pass:**
+**🟢 Established:**
 - Specific quantitative metrics provided across multiple dimensions
 - Clear indication of production deployment (not prototype)
 - Scale appropriate to demonstrate pattern validity
 - Growth trajectory and adoption timeline documented
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Some metrics provided but incomplete picture
 - Scale unclear or appears inflated
 - Production status ambiguous
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - No scale metrics or only vague statements ("many services", "large scale")
 - Appears to be pilot or proof-of-concept, not production
 - Numbers don't align with rest of submission
@@ -328,18 +353,18 @@ Reference architectures should clearly identify and address multiple stakeholder
 - How are incidents detected and resolved?
 - What disaster recovery capabilities exist?
 
-**✅ Pass:**
+**🟢 Established:**
 - Multiple stakeholder perspectives addressed
 - Clear value proposition for each stakeholder group
 - Trade-offs and decision rationale explained
 - Organizational change management considerations included
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Some stakeholders addressed but others missing
 - Value propositions stated but not well documented
 - Limited discussion of organizational impact
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - Only technical perspective (no business or organizational context)
 - Single stakeholder view (e.g., only developers or only ops)
 - No consideration of change management or adoption challenges
@@ -367,10 +392,10 @@ Reference architectures should clearly identify and address multiple stakeholder
 
 **Review Consideration:**
 
-- ✅ Submissions from under-represented industries receive favorable consideration
-- ✅ Healthcare, Manufacturing, Energy, Education particularly valuable
-- ⚠️ Submissions from well-represented industries must demonstrate unique value
-- ❌ Generic submissions from over-represented industries may not add community value
+- 🟢 Submissions from under-represented industries receive favorable consideration
+- 🟢 Healthcare, Manufacturing, Energy, Education particularly valuable
+- 🟡 Submissions from well-represented industries must demonstrate unique value
+- ⚪ Generic submissions from over-represented industries may not add community value
 
 **Geographic Diversity:**
 
@@ -384,18 +409,18 @@ Submissions from under-represented geographies (Latin America, Africa, Middle Ea
 
 ### Organizational Context
 
-**✅ Pass:**
+**🟢 Established:**
 - Industry, size, and regulatory context clearly explained
 - Specific requirements that influenced architecture decisions
 - Team structure and organizational model described
 - Cultural and change management aspects addressed
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Basic organizational info provided but lacks depth
 - Context doesn't clearly connect to architecture decisions
 - Missing key organizational aspects (size, teams, structure)
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - No organizational context provided
 - Generic statements not specific to organization
 - Architecture presented in vacuum without business context
@@ -406,7 +431,7 @@ Submissions from under-represented geographies (Latin America, Africa, Middle Ea
 
 ### Architecture Diagrams and Visual Representations
 
-**✅ Pass:**
+**🟢 Established:**
 - Multiple diagrams showing different aspects (3-5 minimum)
 - High-level architecture overview
 - Network topology and data flow
@@ -416,40 +441,40 @@ Submissions from under-represented geographies (Latin America, Africa, Middle Ea
 - Legend provided for symbols and notation
 - Suitable for "typical CTO" to understand quickly
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Some diagrams provided but coverage incomplete
 - Diagrams present but could be clearer or more detailed
 - Missing key architectural views (e.g., security, networking)
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - No diagrams or only one high-level diagram
-- Diagrams are unclear, unprofessional, or poorly labeled
+- Diagrams would benefit from refinement in clarity and labeling
 - Too many diagrams creating confusion rather than clarity
 - Diagrams don't match text description
 
 **Documentation Quality:**
 
-**✅ Pass:**
+**🟢 Established:**
 - Logical flow from problem → solution → implementation → outcomes
 - Technical depth appropriate for expert practitioners
 - Specific examples and code snippets where helpful
 - Clear explanation of "why" not just "what"
 - Architectural Decision Records (ADRs) or similar documentation referenced
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Content present but organization could be improved
 - Some sections too shallow, others too detailed
 - Flow could be more logical
 
-**❌ Needs Work:**
-- Disorganized or hard to follow
-- Too superficial (marketing-level) or too detailed (implementation guide)
-- Missing critical technical depth
+**⚪ Emerging:**
+- Organization would benefit from improvement
+- Would benefit from additional technical depth
+- Missing critical technical information
 - Inconsistent level of detail across sections
 
 ### Reputation and Professional Standards
 
-**"Does the submission make the platform team look good?"**
+**"Does this demonstrate technical excellence as a team?"**
 
 Strong reference architectures:
 - Showcase technical excellence and thoughtful design
@@ -481,20 +506,20 @@ Content should:
 
 ### Methodology and Measurement
 
-**✅ Pass:**
+**🟢 Established:**
 - Specific, quantitative metrics provided (not vague statements)
 - Before/after comparisons with concrete numbers
 - Clear methodology for how metrics were measured
 - Multiple outcome categories (technical, business, operational)
 - Metrics credible and aligned with stated scale
 
-**⚠️ Partial Pass:**
+**🟡 Developing:**
 - Some metrics provided but methodology unclear
 - Mix of quantitative and vague qualitative statements
 - Metrics seem aspirational rather than actual
 - Limited before/after comparison
 
-**❌ Needs Work:**
+**⚪ Emerging:**
 - No metrics or only qualitative statements ("faster", "better")
 - Methodology completely unclear
 - Metrics don't align with submission scale or seem inflated
@@ -692,7 +717,7 @@ When conducting a reference architecture review:
 
 2. **Research the submitter**
    - Verify CNCF membership status
-   - Check LFX for organization profile
+   - Check cncf/landscape repository for end user member status
    - Look for past KubeCon presentations or case studies
    - Review any GitHub contributions if claimed
 
@@ -702,15 +727,16 @@ When conducting a reference architecture review:
    - Compare to published reference architectures at https://architecture.cncf.io/
 
 4. **Evaluate each criterion independently**
-   - Use the rating scale (✅ / ⚠️ / ❌) consistently
+   - Use the maturity model rating scale (🟢 / 🟡 / ⚪) consistently
    - Provide specific evidence for each rating
    - Quote from submission to support assessments
    - Reference historical examples for context
 
-5. **Calculate overall assessment**
-   - Count criteria at each rating level
-   - Apply overall rating scale (STRONG PASS / PASS / PARTIAL PASS / NEEDS WORK)
-   - Ensure overall rating aligns with individual criteria ratings
+5. **Provide narrative overall assessment**
+   - Summarize maturity across all dimensions
+   - Identify key strengths and development opportunities
+   - Describe readiness for TAB consideration
+   - Suggest constructive pathways forward
 
 6. **Create comprehensive GitHub issue**
    - Use the review deliverable template

@@ -158,6 +158,18 @@ Reference architectures submitted to the TAB must demonstrate:
 7. Quality standards and documentation
 8. Metrics and measurable outcomes
 
+### TAB Review Philosophy
+
+Reference architecture reviews use a **maturity model approach** rather than pass/fail assessment:
+
+- **🟢 Established / 🟡 Developing / ⚪ Emerging** - Recognizes submissions at different stages
+- **Opt-in collaborative process** - Organizations voluntarily contribute to benefit the community
+- **Data-surfacing for TAB** - Reviews inform TAB decisions, not gate contributions
+- **Development pathways** - Focus on opportunities for enhancement, not judgment
+- **Narrative assessments** - Holistic evaluation vs. categorical approval/rejection
+
+Agents conducting reviews should emphasize constructive feedback and recognize that submissions represent significant organizational effort and willingness to share knowledge.
+
 **Full Guidelines:**
 - Comprehensive review guidelines: `process/reference-architecture-review-guidelines.md`
 - Submission template: `.github/ISSUE_TEMPLATE/reference-architecture.yml`
